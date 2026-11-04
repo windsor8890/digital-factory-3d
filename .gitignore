@@ -1,0 +1,21 @@
+# generated / local-only artefacts
+qa-df/**/*.png
+qa-df/**/*.jpg
+qa-df/**/*.html
+qa-df/**/*.json
+qa-df/**/__pycache__/
+qa-df/lead/
+qa-df/smoke*
+
+# reference captures and legacy project outputs (not part of the DF-01 source)
+refs/
+stills/
+preview*.png
+*.zip
+*.pdf
+
+# older single-file pieces in this workspace
+alpine-cube.html
+biomass-plant-3d.html
+oasis-lantern.html
+zhongxiang-wte.html
