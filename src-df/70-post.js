@@ -110,8 +110,14 @@ void main() {
   float vig = smoothstep(1.02, 0.28, length(toC * vec2(1.02, 1.18)));
   col *= mix(1.0, vig, uVignette);
 
-  float g = hash(gl_FragCoord.xy + fract(uTime) * 91.7) - 0.5;
-  col += g * uGrain;
+  // static film grain: no per-frame time term (animated grain made the empty
+  // background shimmer at far distances). A luminance mask keeps it off the
+  // dark void and leaves it on the lit floor/machines.
+  float luma = dot(col, vec3(0.2126, 0.7152, 0.0722));
+  float g = hash(gl_FragCoord.xy) - 0.5;
+  col += g * uGrain * smoothstep(0.004, 0.045, luma);
+  // tiny static dither so the very dark gradient doesn't band in 8-bit output
+  col += (hash(gl_FragCoord.xy + 37.0) - 0.5) * 0.0012;
 
   col = toSRGB(col);
   gl_FragColor = vec4(col, 1.0);

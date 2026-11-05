@@ -289,7 +289,7 @@ from `file://` and offline, no build step at runtime.
 | data layer | amber zone footprints + corner ticks + floor code plates, projected DOM labels with leader lines and live metrics (utilization/WIP), energy-flow trunk + six branches with travelling pulses, AGV/material-flow dots, slow floor scan sweep, dashed twin envelope, 21 station beacons (green run / amber idle / red down) with alarm pings, focus crosshair |
 | simulation | 21 stations, 58 s takt × 2 lines → 124 units/h, shift clock 08:00–20:00 (14:36 start), OEE from availability/performance/quality, injected faults and auto-restores, WIP/energy/AGV telemetry, 96-point output history |
 | HUD | drawing-title block, zone index with utilization bars, OEE ring + A/P/Q, output sparkline, WIP/AGV/energy cards, alarm feed, inspector with station list, view chips + data/label/tour/reset toggles, sim-rate 1×/2×/4×, compass, scale bar, keyboard shortcuts |
-| optics | own post pipeline: 4× MSAA scene target, bloom, ACES grade, grain, vignette, subtle tilt-shift; 4096 key shadow map with tuned bias, fog; DPR up to 1.75 with auto-degrade |
+| optics | own post pipeline: 4× MSAA scene target, bloom, ACES grade, static luminance-masked film grain, vignette, subtle tilt-shift; 4096 key shadow map with tuned bias, fog; DPR up to 1.75 with auto-degrade |
 
 ## Interaction
 
@@ -348,6 +348,9 @@ Edit `src-df/*.js`, run `node build-df.js`, reload.
   cleanly; the loop end equals the opening pose for a seamless repeat
 - `python qa-df/cinema-shots.py` → nine 1440×900 tour stills (arrival poses) for
   framing/clipping review
+- `python qa-df/probe-flicker.py` → far-view background temporal stability:
+  frame-to-frame difference 5.6/255 before, **0.0/255 after** (grain is now
+  static and luminance-masked; the animated grain had made the dark void shimmer)
 - scene: 271 draw calls including post, ≈291k triangles, 21 registered stations,
   69 programs, 4096 shadow map; software-rendered QA at ≈1 fps, hardware 60 fps
 - independent verifier pass over the built deliverable (see `qa-df/verify/`):
