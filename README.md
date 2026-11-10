@@ -1,8 +1,5 @@
 # DF-01 数字工厂 · Digital Factory Twin
 
-> 本仓库只包含 **DF-01 数字工厂** 这一个项目（单文件 WebGL 数字孪生，离线可开）。
-> Only this project is published here; other local prototypes are not part of this repository.
-
 An interactive single-file WebGL digital twin of an EV final-assembly factory:
 a cutaway hall with six production zones — raw-material AS/RS, press line, body
 shop, paint shop, final assembly and end-of-line/dispatch — plus a live data
