@@ -19,3 +19,9 @@ alpine-cube.html
 biomass-plant-3d.html
 oasis-lantern.html
 zhongxiang-wte.html
+
+# local-only projects that are not published in this repository
+lunar-journey/
+china-lunar-exploration-3d.html
+WORKSPACE-NOTES.md
+qa-df/split-readme.py
